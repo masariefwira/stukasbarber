@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @page{
+            size: A5;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Nota Transaksi</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td>Nama</td>
+                <td>: {{transaksi.nama_pelanggan}}</td>
+            </tr>
+            <tr>
+                <td>ID Transaksi</td>
+                <td>: {{transaksi.id_transaksi}}</td>
+            </tr>
+            <tr>
+                <td>Tanggal Sewa</td>
+                <td>: {{transaksi.tanggal}}</td>
+            </tr>
+            <tr>
+                <th>ID Detail Layanan</th>
+                <th>Nama</th>
+                <th>Biaya</th>
+            </tr>
+            {% for item in detail_layanan %}
+            <tr>
+                <td>{{item.id_layanan}}</td>
+                <td>{{item.id_layanan.nama_layanan}}</td>
+                <td>{{item.id_layanan.harga}}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>Harga total</td>
+                <td colspan="3" style="text-align:end ;">{{totallayanan}}</td>
+            </tr>
+            
+            
+        </tbody>
+        </table>
+</body>
+</html>

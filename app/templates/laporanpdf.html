@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @page{
+            size: 'A4';
+            margin: 2.5cm 1.5cm 3.5cm 1.5cm;
+        }
+        table, td, th {
+            border: 1px solid;
+            text-align: center;
+            }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;" >Laporan Transaksi Barbershop </h1>
+    <h3 style="text-align: center;">{{mulai}} - {{akhir}}</h3>
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>IDTransaksi</th>
+                <th>Pelayan</th>
+                <th>Nama</th>
+                <th>Tanggal</th>
+                <th>Layanan</th>
+                <th>Harga</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for item in detailobjek %}
+            <tr>
+                <td  >{{item.0.0.id_transaksi}}</td>
+                <td   >{{item.0.0.id_pelayan}}</td>
+                <td   >{{item.0.0.nama_pelanggan}}</td>
+                <td   >{{item.0.0.tanggal}}</td>
+                <td>
+                    {% for detail in item.1 %}
+
+                    <p>{{detail.id_layanan}}</p>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for detail in item.1 %}
+                    <p>
+
+                        {{detail.id_layanan.harga}}
+                    </p>
+                    {% endfor %}
+                </td>
+
+            </tr>
+            {% endfor %}
+            
+            
+        </tbody>
+    </table>
+    <h4>Total Transaksi : {{ totalharga }}</h4>
+    <h4>Total Pemasukan : {{ totalharga }} </h3>
+    
+</body>
+</html>
